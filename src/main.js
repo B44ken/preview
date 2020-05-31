@@ -1,26 +1,26 @@
-var scraper = document.createElement("div")
-scraper.style.width = "300px"
-scraper.style.height = "200px"
-scraper.style.border = "3px solid #333"
-scraper.style.background = "#fff"
-scraper.style.borderRadius = "6px"
-scraper.style.display = "none"
-scraper.style.position = "absolute"
-scraper.style.overflow = "hidden"
-scraper.style.top = "50px"
-scraper.style.left = "50px"
+var widget = document.createElement("div")
+widget.style.width = "300px"
+widget.style.height = "200px"
+widget.style.border = "3px solid #333"
+widget.style.background = "#fff"
+widget.style.borderRadius = "6px"
+widget.style.display = "none"
+widget.style.position = "absolute"
+widget.style.overflow = "hidden"
+widget.style.top = "50px"
+widget.style.left = "50px"
 
-document.body.appendChild(scraper)
+document.body.appendChild(widget)
 
 document.body.addEventListener("mousemove", event => {
     y=event.clientY
     x=event.clientX
-    scraper.style.left=(x+5)+"px"
-    scraper.style.top=(y+5)+"px"
+    widget.style.left=(x+5)+"px"
+    widget.style.top=(y+5)+"px"
   })
 
 document.body.addEventListener("mouseover", event => {
-  scraper.style.display = "none"
+  widget.style.display = "none"
 
   const onlyLinks = event.path.filter(e => e.nodeName == "A");
   if (onlyLinks.length == 0) return false;
@@ -31,14 +31,19 @@ document.body.addEventListener("mouseover", event => {
   if (!scrapers[hostname]) return false
   if (chost == hostname) return false
 
-  scraper.style.display = "block"
+  widget.style.display = "block"
   
   fetch("https://api.allorigins.win/get?url=" + url.href)
 	  .then(e => e.json())
 	  .then(html => {
 		  dom = new DOMParser().parseFromString(html.contents, "text/html")
-		  const code = scrapers[hostname](dom, url.href)
-		  if(code != false) { scraper.innerHTML = code }
-		  else { scraper.style.display = "none" }
+		  var code = false
+		  for(scraper in scrapers) {
+			  if(scraper[0].test(html.href)) 
+				  code = scraper[1](dom, url.href)
+				  widget.innerHTML = code
+		  }
+		  if(code != false) { s }
+		  if(code == false) widget.style.display = "none"
   })
 })
