@@ -2,6 +2,7 @@ var scraper = document.createElement("div")
 scraper.style.width = "300px"
 scraper.style.height = "200px"
 scraper.style.border = "3px solid #333"
+scraper.style.background = "#fff"
 scraper.style.borderRadius = "6px"
 scraper.style.display = "none"
 scraper.style.position = "absolute"
