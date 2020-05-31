@@ -6,7 +6,7 @@ scraper.style.background = "#fff"
 scraper.style.borderRadius = "6px"
 scraper.style.display = "none"
 scraper.style.position = "absolute"
-scraper.style.overflow = "auto"
+scraper.style.overflow = "hidden"
 scraper.style.top = "50px"
 scraper.style.left = "50px"
 
