@@ -1,6 +1,6 @@
 # Preview
 Quick no-click website previews for chrome.
-[Demo](https://www.youtube.com/watch?v=loGvjBH2MWE)
+[Demo](https://www.youtube.com/watch?v=4iGcNqLQClc)
 
 ## Installing
 - In Google Chrome, go to [chrome://extensions]
